@@ -1,0 +1,856 @@
+/* =========================================================
+   БАЗОВЫЕ ПРАВИЛА (все устройства)
+   ========================================================= */
+
+img,
+video {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Skip-link */
+.skip-link {
+	position: fixed;
+	top: -100px;
+	left: 0;
+	padding: 10px 20px;
+	background: var(--color-primary);
+	color: var(--color-white);
+	text-decoration: none;
+	font-size: 16px;
+	z-index: 10000;
+	border-radius: 0 0 var(--radius-xs) 0;
+	transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+	top: 0;
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+/* Бургер-меню — скрыт на десктопе */
+.burger-menu {
+	display: none;
+	flex-direction: column;
+	gap: 5px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 10px;
+	z-index: 100;
+}
+
+.burger-menu span {
+	display: block;
+	width: 25px;
+	height: 3px;
+	background-color: var(--color-primary);
+	border-radius: 3px;
+	transition: 0.3s;
+}
+
+/* Обёртка для таблицы */
+.table-wrapper {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	width: 100%;
+}
+
+.product-table {
+	min-width: 500px;
+}
+
+
+/* =========================================================
+   ПЛАНШЕТ + МОБИЛЬНЫЙ (0 – 1200px) — колонки
+   ========================================================= */
+@media (max-width: 1200px) {
+
+	section {
+		height: auto;
+		min-height: auto;
+	}
+
+	/* Секции с контентом — даём им расти */
+	.advantages,
+	.popular,
+	#faq,
+	.how-to-order,
+	.reviews {
+	height: auto;
+	min-height: auto;
+	}
+
+	/* Hero: колонка */
+	.hero {
+		height: auto;
+		min-height: auto;
+	}
+
+	.hero__bg img {
+		object-fit: cover;
+	}
+
+	.hero__inner {
+		height: auto;
+		min-height: auto;
+		padding-bottom: 10px;
+	}
+
+	.hero__content {
+		flex-direction: column;
+		padding: 0 20px;
+		height: auto;
+		gap: 20px;
+	}
+
+	.hero__title {
+		font-size: 24px;
+		padding: 10px;
+	}
+
+	.hero__left {
+		font-size: 20px;
+	}
+
+	.hero__text {
+		font-size: 20px;
+		padding: 20px 15px;
+	}
+
+	.fact-card__title {
+		font-size: 24px;
+	}
+
+	.fact-card__text {
+		font-size: 20px;
+	}
+
+	/* Advantages: 2 колонки на планшете, 1 на мобилке — зададим ниже */
+	.advantages__grid {
+		grid-template-columns: repeat(2, 1fr);
+		padding: 0 30px;
+	}
+
+	/* Products: 2 колонки */
+	.products__grid {
+		grid-template-columns: repeat(2, 1fr);
+		padding: 0 30px;
+		gap: 20px;
+	}
+
+	.products {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	/* Catalog: колонка */
+	.catalog {
+		flex-direction: column;
+		padding: 20px;
+	}
+
+	.filters-container {
+		position: static;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	/* Product: колонка */
+	.product {
+		padding: 20px;
+	}
+
+	.product__container {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+
+	.product__gallery {
+		position: static;
+		height: 350px;
+	}
+
+	/* Order form: колонка */
+	.order {
+		padding: 20px;
+	}
+
+	.order-form {
+		grid-template-columns: 1fr;
+		padding: 20px;
+	}
+
+	.order-form__field--full {
+		grid-column: auto;
+	}
+
+	/* Contacts: 2 колонки на планшете */
+	.contacts {
+		padding: 20px;
+	}
+
+	.contacts__info {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	/* FAQ — вопрос сверху, ответ снизу */
+	.faq__list {
+		padding: 0 20px;
+		height: auto;
+	}
+
+	.faq-item {
+		flex-direction: column;
+	}
+
+	.faq-item__answer {
+		flex: 1;
+		opacity: 1;
+		padding: 10px;
+	}
+
+	/* Steps — карточка с шагами на планшете/мобилке */
+	.step-card {
+		width: 95%;
+		height: 480px;
+		/* фиксированная высота — чтобы absolute-слайды не схлопнулись */
+		min-height: auto;
+		padding: 20px;
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+
+	.step-card__stage {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+
+	/* Слайд: колонка (цифра сверху, картинка, заголовок, текст) */
+	.step-card__slide {
+		position: absolute;
+		inset: 0;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 10px 0;
+	}
+
+	/* Цифра — без scaleY-растяжки */
+	.step-card__num {
+		flex: none;
+		font-size: 60px;
+		line-height: 1;
+		transform: none;
+		/* ← убираем scaleY(5.7) scaleX(2.3) */
+		height: auto;
+		padding: 0;
+		margin-bottom: 10px;
+	}
+
+	.step-card__content {
+		flex: none;
+		width: 100%;
+	}
+
+	/* Картинки шагов — фиксированные размеры, а не vh */
+	.step-card__image,
+	.step-card__image--choose,
+	.step-card__image--end {
+		width: 120px;
+		height: 120px;
+		margin: 0 auto 10px;
+	}
+
+	.step-card__title {
+		font-size: 26px;
+		margin: 0 0 5px;
+	}
+
+	.step-card__text {
+		font-size: 18px;
+		padding: 0 20px;
+	}
+
+	/* Блок «Как сделать заказ» на планшете */
+	.step-card {
+		width: 80%;
+		height: auto;
+		min-height: auto;
+		padding: 20px;
+	}
+
+	.step-card__stage {
+		height: auto;
+		min-height: 380px;
+	}
+
+	.step-card__image {
+		height: 150px;
+		width: 150px;
+		background-size: contain;
+	}
+
+	.step-card__image--choose,
+	.step-card__image--end {
+		width: 150px;
+	}
+
+	/* Reviews — карусель сохраняется на всех экранах */
+	.reviews__wrapper {
+		gap: 8px;
+	}
+
+	.reviews__track {
+		gap: 15px;
+	}
+
+	.review-card {
+		flex: 0 0 260px;
+		/* карточка чуть уже */
+		padding: 20px;
+		scroll-snap-align: start;
+	}
+
+	.review-card__text {
+		font-size: 18px;
+	}
+
+	.review-card__stars {
+		font-size: 28px;
+	}
+
+	.review-card__author {
+		font-size: 15px;
+	}
+
+	.reviews__arrow {
+		width: 40px;
+		height: 40px;
+		background-size: 40px;
+		flex-shrink: 0;
+	}
+
+	/* Отключаем scroll-driven анимацию на мобильных — она вызывает хаос при тапе */
+	.advantage-card--from-left,
+	.advantage-card--from-right {
+		animation: none;
+	}
+
+	/* Уменьшаем меню, чтобы влезало до включения бургера */
+	.site-nav__link {
+		font-size: 16px;
+	}
+
+	.site-nav__item {
+		padding: 6px 12px;
+	}
+
+	/* На тач-устройствах ховера нет — показываем контент всегда */
+	.catalog-product-card .product-card__content {
+		display: block;
+		position: absolute;
+		max-height: 60%;
+		bottom: 0;
+		left: 0;
+	}
+
+	.catalog-product-card .product-card__badge {
+		display: block;
+		/* Показываем бейджик (Хит/Новинка) */
+	}
+
+	.catalog-product-card .product-card__spacer {
+		display: none;
+	}
+
+	.catalog-product-card {
+		height: auto;
+		min-height: 300px;
+	}
+
+	/* В каталоге на тач-устройствах контент показываем всегда */
+	.catalog-product-card .product-card__content {
+		display: block;
+		flex: 1;
+	}
+
+	.catalog-product-card .product-card__spacer {
+		flex: 1;
+	}
+
+	.catalog-product-card {
+		height: 400px;
+		/* повыше, чтобы картинка была видна */
+	}
+
+	/* Кнопки фильтров на мобилке */
+	.filters__actions {
+		display: flex;
+		flex-direction: column;
+		/* В столбик */
+		gap: 8px;
+		margin-top: 15px;
+	}
+
+	.filters__actions .filters__button {
+		width: 100%;
+		/* На всю ширину контейнера */
+		font-size: 14px;
+		/* Уменьшаем шрифт (было 15px) */
+		padding: 8px 10px;
+		/* Уменьшаем отступы (было 5px 15px) */
+		margin: 0;
+		/* Убираем возможные отступы */
+		box-sizing: border-box;
+		/* Чтобы padding не увеличивал ширину */
+	}
+}
+
+
+/* =========================================================
+   ТОЛЬКО МОБИЛЬНЫЙ (0 – 767px) — доп. сжатие
+   ========================================================= */
+@media (max-width: 767px) {
+
+	/* Всё в 1 колонку */
+	.advantages__grid {
+		grid-template-columns: 1fr;
+		padding: 0 20px;
+	}
+
+	.products__grid {
+		grid-template-columns: 1fr;
+		padding: 0 20px;
+	}
+
+	.products {
+		grid-template-columns: 1fr;
+	}
+
+	.contacts__info {
+		grid-template-columns: 1fr;
+	}
+
+	/* Шрифты — уменьшаем */
+	body {
+		font-size: 15px;
+	}
+
+	.section-title {
+		font-size: 24px;
+		padding: 15px 10px;
+	}
+
+	.hero__title {
+		font-size: 20px;
+	}
+
+	.hero__left {
+		font-size: 16px;
+	}
+
+	.hero__text {
+		font-size: 16px;
+	}
+
+	.fact-card__title {
+		font-size: 20px;
+	}
+
+	.fact-card__text {
+		font-size: 15px;
+	}
+
+	.button {
+		font-size: 16px;
+		padding: 8px 16px;
+	}
+
+	/* Hero-кнопки в столбик */
+	.hero__actions {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		align-items: center;
+		width: 100%;
+	}
+
+	.hero__actions .button {
+		margin-left: 0;
+		/* убираем стандартный margin-left: 10px */
+		width: 100%;
+		max-width: 280px;
+		text-align: center;
+	}
+
+	/* Кнопка отправки формы — на всю ширину */
+	.order-form__button {
+		width: 100%;
+	}
+
+	/* Кнопки в карточке товара (Подробнее/Заказать) уже в столбик — не трогаем */
+
+	.advantage-card__title {
+		font-size: 22px;
+	}
+
+	.advantage-card__text {
+		font-size: 15px;
+	}
+
+	.product-card__name {
+		font-size: 18px;
+	}
+
+	.product-card__info {
+		font-size: 22px;
+	}
+
+	.product-card__more,
+	.product-card__buy {
+		font-size: 14px;
+	}
+
+	/* FAQ — ответы видны всегда на мобилке */
+	.faq-item {
+		flex-direction: column;
+	}
+
+	.faq-item__question {
+		font-size: 18px;
+		margin-bottom: 8px;
+	}
+
+	.faq-item__answer {
+		flex: 1 !important;
+		opacity: 1 !important;
+		padding: 10px 15px !important;
+		transition: none;
+	}
+
+	.faq-item__answer {
+		font-size: 15px;
+	}
+
+	/* ===== Блок «Как сделать заказ» — на мобилке ===== */
+	.step-card {
+		width: 95%;
+		height: auto;
+		min-height: auto;
+		padding: 15px;
+		margin-bottom: 15px;
+	}
+
+	.step-card__stage {
+		height: auto;
+		min-height: 340px;
+		/* чтобы слайд с абсолютным позиционированием имел высоту */
+	}
+
+	.step-card__slide {
+		padding: 5px;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.step-card__num {
+		font-size: 48px;
+		transform: none;
+		/* на мобилке огромная цифра не нужна */
+		padding-left: 0;
+		height: auto;
+	}
+
+	.step-card__image {
+		height: 120px;
+		width: 120px;
+		background-size: contain;
+		/* гифка вписывается целиком, не обрезается */
+		margin: 0 auto 10px;
+	}
+
+	.step-card__image--choose,
+	.step-card__image--end {
+		width: 120px;
+	}
+
+	.step-card__title {
+		font-size: 20px;
+		margin: 0 0 5px;
+	}
+
+	.step-card__text {
+		font-size: 14px;
+		padding: 0 15px;
+	}
+
+	.review-card__text {
+		font-size: 18px;
+	}
+
+	.review-card__stars {
+		font-size: 28px;
+	}
+
+	.review-card__author {
+		font-size: 15px;
+	}
+
+	/* Отзывы — только свайп, без стрелок */
+	.reviews__arrow {
+		display: none;
+	}
+
+	.reviews__track {
+		/* скрываем скроллбар для чистоты */
+		scrollbar-width: none;
+	}
+
+	.reviews__track::-webkit-scrollbar {
+		display: none;
+	}
+
+	.product__title {
+		font-size: 24px;
+	}
+
+	.product__price {
+		font-size: 24px;
+	}
+
+	.product__description {
+		font-size: 15px;
+	}
+
+	.product__table-caption {
+		font-size: 18px;
+	}
+
+	.product-table th,
+	.product-table td {
+		font-size: 15px;
+	}
+
+	.order__title {
+		font-size: 26px;
+	}
+
+	.order__subtitle {
+		font-size: 15px;
+	}
+
+	.order-form__label {
+		font-size: 15px;
+	}
+
+	.order-form__input,
+	.order-form__textarea {
+		font-size: 15px;
+		padding: 10px 12px;
+	}
+
+	.contacts__title {
+		font-size: 26px;
+	}
+
+	.contacts__subtitle {
+		font-size: 15px;
+	}
+
+	.contact-item__title {
+		font-size: 18px;
+	}
+
+	.contact-item__value {
+		font-size: 15px;
+	}
+
+	.contacts__cta-title {
+		font-size: 20px;
+	}
+
+	.contacts__cta-text {
+		font-size: 15px;
+	}
+
+	/* Таблица → карточки */
+	.product-table {
+		min-width: auto;
+	}
+
+	.product-table thead {
+		display: none;
+	}
+
+	.product-table tbody,
+	.product-table tr,
+	.product-table th,
+	.product-table td {
+		display: block;
+		width: 100%;
+	}
+
+	.product-table tr {
+		margin-bottom: 15px;
+		border: 1px dashed var(--color-primary);
+		border-radius: var(--radius-md);
+		padding: 10px;
+		background: var(--color-pink-light);
+	}
+
+	.product-table th,
+	.product-table td {
+		border: none;
+		text-align: left;
+		padding: 5px 10px;
+	}
+
+	.product-table th {
+		border-bottom: 1px dashed var(--color-primary);
+	}
+
+	/* Footer */
+	.site-footer__inner {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.site-footer__contacts {
+		flex-direction: column;
+		gap: 5px;
+	}
+
+	/* Голосовалка и панель с котом — скрыть на мобильных */
+	.cat-vote-btn,
+	.cat-panel {
+		display: none;
+	}
+}
+
+/* =========================================================
+   ПЛАНШЕТ + МОБИЛЬНЫЙ (0 – 1023px) — бургер
+   ========================================================= */
+@media (max-width: 1023px) {
+
+	.site-header {
+		flex-wrap: wrap;
+		height: auto;
+		min-height: var(--header-height);
+		padding: 10px 15px;
+		align-items: center;
+	}
+
+	/* Логотип — слева, не растягивается */
+	.site-header__logo {
+		flex: 0 0 auto;
+		height: auto;
+		justify-content: flex-start;
+	}
+
+	.site-header__logo-img {
+		height: 50px;
+		margin-right: 8px;
+	}
+
+	.site-header__logo-img img {
+		height: 50px;
+	}
+
+	.site-header__logo-text {
+		width: auto;
+		font-size: 20px;
+	}
+
+	/* Анимация бургера в крестик */
+	.burger-menu.active span:nth-child(1) {
+		transform: translateY(8px) rotate(45deg);
+	}
+
+	.burger-menu.active span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.burger-menu.active span:nth-child(3) {
+		transform: translateY(-8px) rotate(-45deg);
+	}
+
+	    /* ===== Бургер-меню на планшете и мобилке ===== */
+    .burger-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        margin-left: auto;          /* прижимает бургер к правому краю */
+        z-index: 1002;
+    }
+
+    .burger-menu span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--color-primary);
+        border-radius: 3px;
+        transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .burger-menu.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .burger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .burger-menu.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Меню — выезжает панелью под шапкой */
+    .site-header__nav-wrapper {
+        display: none;
+        position: absolute;
+        top: 100%;              /* сразу под шапкой */
+        left: 0;
+        width: 100%;
+        background-color: var(--color-bg);
+        border-top: 1px dashed var(--color-primary);
+        border-bottom: 1px dashed var(--color-primary);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        z-index: 1001;
+    }
+
+    .site-header__nav-wrapper.active {
+        display: block;
+    }
+
+    .site-nav__list {
+        flex-direction: column;
+        gap: 5px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .site-nav__item {
+        padding: 8px 20px;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .site-nav__link {
+        font-size: 17px;
+        display: block;
+        width: 100%;
+    }
+
+	/* Тап по карточке в каталоге → показать контент */
+	.catalog-product-card--open .product-card__content,
+	.catalog-product-card--open .product-card__badge {
+		display: block;
+	}
+}
