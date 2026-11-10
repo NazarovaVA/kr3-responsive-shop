@@ -36,11 +36,6 @@ kr3-responsive-shop/
 │   └── products.json       # Данные товаров каталога
 ├── images/                 # Изображения
 ├── lighthouse/             # Отчеты проверки доступности
-│   ├── accessibility-index.png
-│   ├── accessibility-catalog.png
-│   ├── accessibility-order.png
-│   └── accessibility-contacts.png
-├── sitemap.xml             # Карта сайта
 ├── README.md               # Описание проекта
 └── .gitignore
 ```
